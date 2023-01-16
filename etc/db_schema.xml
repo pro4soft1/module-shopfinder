@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="shop_finders" resource="default" engine="innodb" comment="Shop finder table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="name" comment="Shop Name"  />
+        <column xsi:type="varchar" name="identifier" comment="Shop identifier" />
+        <column xsi:type="varchar" name="address" comment="Shop Address" />
+        <column xsi:type="varchar" name="address_2" comment="Shop Address2" />
+        <column xsi:type="varchar" name="city" comment="Shop City" />
+        <column xsi:type="varchar" name="country" comment="Shop Country" nullable="false" />
+        <column xsi:type="varchar" name="state" comment="Shop State"  />
+        <column xsi:type="varchar" name="zip" comment="Shop Zip-code" nullable="false" />
+        <column xsi:type="varchar" name="phone" comment="Shop Phone" nullable="true" />
+        <column xsi:type="bigint" name="latitude" comment="Shop latitude" nullable="true" />
+        <column xsi:type="bigint" name="longitude" comment="Shop longitude" nullable="true" />
+         <column xsi:type="varchar" name="email" comment="Shop Email" nullable="true" />
+        <column xsi:type="varchar" name="image" comment="Shop Image" nullable="true" />
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false"  default="2" comment="Shop Status"/>
+        <column xsi:type="smallint" name="can_collect" unsigned="true"  nullable="false"  default="2" comment="Can Collect"/>
+        <column xsi:type="text" name="description" nullable="false"    comment="Shop Description"/>
+        <column xsi:type="text" name="open_info" nullable="false"   comment="Open Shop Description"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false"   comment="Store ID"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+</schema>
