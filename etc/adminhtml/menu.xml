@@ -8,6 +8,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Sf_Shopfinder::listing" title="Shopfinder" translate="title" module="Sf_Shopfinder" sortOrder="101" parent="Magento_Backend::content_elements"   action="shopfinder/shop"  resource="Sf_Shopfinder::listing"/>
-
     </menu>
 </config>

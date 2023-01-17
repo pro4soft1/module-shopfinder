@@ -1,0 +1,98 @@
+type Query {
+
+    getshop(
+        id: Int @doc(description: "Enter Shop ID")
+    ): GetShop
+    @resolver(class:"Sf\\Shopfinder\\Model\\Resolver\\Shop") @doc(description:"The query returns information about a Shop")
+
+    getshops(
+        filter: ShopFinderFilterInputs @doc(description: "you can filter the list of Shop items ")
+        pageSize: Int = 5
+        @doc(description: "Enter How many items you want to show in the list")
+        currentPage: Int = 1
+        @doc(description: "Enter the number of items you want to show in the list")
+    ): ShopFinderList
+    @resolver(class: "Sf\\Shopfinder\\Model\\Resolver\\ListShop") @doc(description: "You can find the list of shops Here ")
+
+
+}
+
+type GetShop @doc(description: "Shop Details details") {
+    entity_id: Int
+    name: String
+    identifier:String
+    address:String
+    address_2:String
+    city:String
+    country:String
+    state:String
+    zip:Int
+    phone:Int
+    latitude:Int
+    longitude:Int
+    email:String
+    image:String
+    status:Int
+    can_collect:Int
+    description:String
+    open_info:String
+    store_id:Int
+    created_at:String
+    updated_at:String
+}
+
+type ShopFinderList {
+    total_count: Int @doc(description: "Total count of items")
+    items: [ShopFinderFields] @doc(description: "the list of items")
+}
+
+type ShopFinderFields {
+    entity_id: Int
+    name: String
+    identifier:String
+    address:String
+    address_2:String
+    city:String
+    country:String
+    state:String
+    zip:Int
+    phone:Int
+    latitude:Int
+    longitude:Int
+    email:String
+    image:String
+    status:Int
+    can_collect:Int
+    description:String
+    open_info:String
+    store_id:Int
+    created_at:String
+    updated_at:String
+}
+
+
+input ShopFinderFilterInputs {
+    entity_id: FilterTypeInput @doc(description: "")
+    name: FilterTypeInput @doc(description: "")
+    identifier:FilterTypeInput @doc(description: "")
+    address:FilterTypeInput @doc(description: "")
+    address_2:FilterTypeInput @doc(description: "")
+    city:FilterTypeInput @doc(description: "")
+    country:FilterTypeInput @doc(description: "")
+    state:FilterTypeInput @doc(description: "")
+    zip:FilterTypeInput @doc(description: "")
+    phone:FilterTypeInput @doc(description: "")
+    latitude:FilterTypeInput @doc(description: "")
+    longitude:FilterTypeInput @doc(description: "")
+    email:FilterTypeInput @doc(description: "")
+    image:FilterTypeInput @doc(description: "")
+    status:FilterTypeInput @doc(description: "")
+    can_collect:FilterTypeInput @doc(description: "")
+    description:FilterTypeInput @doc(description: "")
+    open_info:FilterTypeInput @doc(description: "")
+    store_id:FilterTypeInput @doc(description: "")
+    created_at:FilterTypeInput @doc(description: "")
+    updated_at:FilterTypeInput @doc(description: "")
+    or: ShopFinderFilterInputs
+
+}

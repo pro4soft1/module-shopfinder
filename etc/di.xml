@@ -2,7 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-    <virtualType name="Sf\Shopfinder\Model\ResourceModel\Shops\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="Sf\Shopfinder\Model\ResourceModel\Shops\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">shop_finders</argument>
             <argument name="resourceModel" xsi:type="string">Sf\Shopfinder\Model\ResourceModel\Shops</argument>
@@ -11,7 +12,9 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="shopfinder_listing_data_source" xsi:type="string">Sf\Shopfinder\Model\ResourceModel\Shops\Grid\Collection</item>
+                <item name="shopfinder_listing_data_source" xsi:type="string">
+                    Sf\Shopfinder\Model\ResourceModel\Shops\Grid\Collection
+                </item>
             </argument>
         </arguments>
     </type>
@@ -35,4 +38,20 @@
         </arguments>
     </type>
     <!-- End Image Uploader -->
+    <preference for="\Sf\Shopfinder\Api\Data\ShopInterface" type="\Sf\Shopfinder\Model\Shops" />
+    <preference for="\Sf\Shopfinder\Api\ShopRepositoryInterface" type="\Sf\Shopfinder\Model\ShopRepository" />
+    <preference for="\Sf\Shopfinder\Api\Data\ShopResultSearchltInterface" type="Magento\Framework\Api\SearchResults"/>
+
+
+
+    <type name="Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesPool">
+        <arguments>
+            <argument name="attributesInstances" xsi:type="array">
+                <item name="shopfinder" xsi:type="object">
+                    \Sf\Shopfinder\Model\Resolver\ShopFilterArgument
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>
